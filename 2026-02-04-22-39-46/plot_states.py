@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # ------------------ Load log ------------------
-log_file = "drone_path_20260209_192234.csv" # change this
+log_file = "drone_path.csv"
 df = pd.read_csv(log_file)
 
 t = df["time"]
