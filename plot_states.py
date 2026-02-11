@@ -1,13 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ------------------ Load log ------------------
+# Load log 
 log_file = "drone_path.csv"
 df = pd.read_csv(log_file)
 
 t = df["time"]
 
-# ------------------ Position ------------------
+#  Position 
 plt.figure()
 plt.plot(t, df["x"], label="x")
 plt.plot(t, df["y"], label="y")
@@ -19,7 +19,7 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# ------------------ Velocity ------------------
+#  Velocity 
 plt.figure()
 plt.plot(t, df["vx"], label="vx")
 plt.plot(t, df["vy"], label="vy")
@@ -31,7 +31,7 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# ------------------ Orientation ------------------
+# Orientation 
 plt.figure()
 plt.plot(t, df["roll"], label="roll")
 plt.plot(t, df["pitch"], label="pitch")
@@ -43,7 +43,7 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# ------------------ Control vs Response ------------------
+#Control vs Response
 plt.figure()
 plt.plot(t, df["yaw"], label="Yaw")
 plt.plot(t, df["yawRate"], "--", label="Yaw Rate Command")
@@ -53,7 +53,7 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# ------------------ 3D Trajectory ------------------
+# 3D Trajectory
 from mpl_toolkits.mplot3d import Axes3D
 
 fig = plt.figure()
@@ -64,3 +64,14 @@ ax.set_ylabel("Y (m)")
 ax.set_zlabel("Z (m)")
 ax.set_title("3D Flight Trajectory")
 plt.show()
+
+# 3D GPS Trajectory
+fig = plt.figure()
+ax = fig.add_subplot(111, projection="3d")
+ax.plot(df["lon"], df["lat"], df["alt"])
+ax.set_xlabel("Longitude")
+ax.set_ylabel("Latitude")
+ax.set_zlabel("Altitude (m)")
+ax.set_title("3D GPS Trajectory")
+plt.show()
+
